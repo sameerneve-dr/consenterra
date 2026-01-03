@@ -59,7 +59,13 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-20 lg:py-28">
+      <section className="py-20 lg:py-28 relative overflow-hidden">
+        {/* Light green paintbrush background */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-sage/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-eco-green/15 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-forest/10 rounded-full blur-3xl"></div>
+        </div>
         <div className="section-container">
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
             {/* Logo - Large and Centered */}
@@ -67,7 +73,7 @@ export default function Home() {
               <img
                 src={logo}
                 alt="ConsenTerra"
-                className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56"
+                className="w-56 h-56 sm:w-72 sm:h-72 lg:w-96 lg:h-96"
               />
             </div>
 
