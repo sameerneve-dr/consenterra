@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Shield, Rocket, Leaf, CheckCircle } from "lucide-react";
 import logo from "@/assets/ConsenTerra_Logo.png";
+import heroBackground from "@/assets/hero-background.png";
 import RotatingHeadlinePhrase from "@/components/RotatingHeadlinePhrase";
 
 const solutions = [
@@ -58,24 +59,24 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="py-16 lg:py-24 relative overflow-hidden min-h-[85vh]">
-        {/* Watercolor-inspired background matching the blue-gray tones */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[hsl(200,25%,70%)]/20 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-[hsl(195,20%,60%)]/15 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-1/4 w-[600px] h-[400px] bg-[hsl(180,15%,55%)]/15 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-[hsl(190,20%,50%)]/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[hsl(0,0%,95%)]/40 rounded-full blur-3xl"></div>
-        </div>
-        <div className="section-container">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center animate-fade-in-up">
+      {/* Hero Section with background image */}
+      <section 
+        className="min-h-[90vh] relative overflow-hidden"
+        style={{
+          backgroundImage: `url(${heroBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="section-container h-full py-8 lg:py-12">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh] animate-fade-in-up">
             {/* Left Side - Large Logo */}
-            <div className="flex justify-center lg:justify-start">
+            <div className="flex justify-center lg:justify-center items-center">
               <img
                 src={logo}
                 alt="ConsenTerra"
-                className="w-72 h-72 sm:w-96 sm:h-96 lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]"
+                className="w-80 h-80 sm:w-[400px] sm:h-[400px] lg:w-[550px] lg:h-[550px] xl:w-[650px] xl:h-[650px] object-contain"
               />
             </div>
 
