@@ -59,89 +59,94 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-20 lg:py-28 relative overflow-hidden">
-        {/* Light green paintbrush background */}
+      <section className="py-16 lg:py-24 relative overflow-hidden min-h-[85vh]">
+        {/* Watercolor-inspired background matching the blue-gray tones */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-sage/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-eco-green/15 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-forest/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[hsl(200,25%,70%)]/20 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-[hsl(195,20%,60%)]/15 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-[600px] h-[400px] bg-[hsl(180,15%,55%)]/15 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-[hsl(190,20%,50%)]/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[hsl(0,0%,95%)]/40 rounded-full blur-3xl"></div>
         </div>
         <div className="section-container">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-            {/* Logo - Large and Centered */}
-            <div className="mb-10 flex justify-center">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center animate-fade-in-up">
+            {/* Left Side - Large Logo */}
+            <div className="flex justify-center lg:justify-start">
               <img
                 src={logo}
                 alt="ConsenTerra"
-                className="w-56 h-56 sm:w-72 sm:h-72 lg:w-96 lg:h-96"
+                className="w-72 h-72 sm:w-96 sm:h-96 lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]"
               />
             </div>
 
-            {/* Eyebrow Text */}
-            <p className="text-xs tracking-[0.2em] text-muted-foreground mb-8 uppercase">
-              CLARITY FOR EVERYDAY DECISIONS.
-            </p>
+            {/* Right Side - Content */}
+            <div className="text-center lg:text-left">
+              {/* Eyebrow Text */}
+              <p className="text-xs tracking-[0.2em] text-muted-foreground mb-6 uppercase">
+                CLARITY FOR EVERYDAY DECISIONS.
+              </p>
 
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-8">
-              ConsenTerra builds simple AI tools<br />
-              for clarity in <RotatingHeadlinePhrase />
-            </h1>
+              {/* Main Headline */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-[1.1] mb-6">
+                ConsenTerra builds simple AI tools<br />
+                for clarity in <RotatingHeadlinePhrase />
+              </h1>
 
-            {/* Subheading */}
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 leading-relaxed">
-              Privacy, early-stage entrepreneurship, and sustainable living,<br />
-              explained without the noise.
-            </p>
+              {/* Subheading */}
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-3 leading-relaxed">
+                Privacy, early-stage entrepreneurship, and sustainable living,<br className="hidden sm:block" />
+                explained without the noise.
+              </p>
 
-            {/* Micro-copy */}
-            <p className="text-sm text-muted-foreground/70 mb-10">
-              Less guesswork. More clear choices.
-            </p>
+              {/* Micro-copy */}
+              <p className="text-sm text-muted-foreground/70 mb-8">
+                Less guesswork. More clear choices.
+              </p>
 
-            {/* Solutions Button */}
-            <div className="relative inline-block">
-              <Button 
-                size="lg" 
-                className="rounded-full px-8 text-base"
-                onClick={() => setShowSolutions(!showSolutions)}
-              >
-                Explore our tools
-                <ChevronDown className={`ml-2 h-4 w-4 transition-transform duration-200 ${showSolutions ? 'rotate-180' : ''}`} />
-              </Button>
+              {/* Solutions Button */}
+              <div className="relative inline-block">
+                <Button 
+                  size="lg" 
+                  className="rounded-full px-8 text-base"
+                  onClick={() => setShowSolutions(!showSolutions)}
+                >
+                  Explore our tools
+                  <ChevronDown className={`ml-2 h-4 w-4 transition-transform duration-200 ${showSolutions ? 'rotate-180' : ''}`} />
+                </Button>
 
-              {/* Solutions Dropdown */}
-              {showSolutions && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[90vw] max-w-4xl bg-card border border-border rounded-2xl shadow-xl p-6 z-50 animate-fade-in">
-                  <div className="grid md:grid-cols-3 gap-6">
-                    {solutions.map((solution) => {
-                      const Icon = solution.icon;
-                      return (
-                        <Link
-                          key={solution.id}
-                          to={solution.href}
-                          className="group p-5 bg-background rounded-xl border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-md text-left"
-                        >
-                          <div className={`inline-flex p-2 rounded-lg bg-primary/10 mb-3 ${solution.color}`}>
-                            <Icon className="h-5 w-5" />
-                          </div>
-                          <h3 className="text-lg font-semibold text-foreground mb-1">{solution.name}</h3>
-                          <p className="text-sm text-accent italic mb-3">{solution.tagline}</p>
-                          <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{solution.description}</p>
-                          <ul className="space-y-1.5">
-                            {solution.capabilities.map((cap) => (
-                              <li key={cap} className="flex items-start gap-2 text-xs text-muted-foreground">
-                                <CheckCircle className="h-3.5 w-3.5 text-primary flex-shrink-0 mt-0.5" />
-                                {cap}
-                              </li>
-                            ))}
-                          </ul>
-                        </Link>
-                      );
-                    })}
+                {/* Solutions Dropdown */}
+                {showSolutions && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 mt-4 w-[90vw] max-w-4xl bg-card border border-border rounded-2xl shadow-xl p-6 z-50 animate-fade-in">
+                    <div className="grid md:grid-cols-3 gap-6">
+                      {solutions.map((solution) => {
+                        const Icon = solution.icon;
+                        return (
+                          <Link
+                            key={solution.id}
+                            to={solution.href}
+                            className="group p-5 bg-background rounded-xl border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-md text-left"
+                          >
+                            <div className={`inline-flex p-2 rounded-lg bg-primary/10 mb-3 ${solution.color}`}>
+                              <Icon className="h-5 w-5" />
+                            </div>
+                            <h3 className="text-lg font-semibold text-foreground mb-1">{solution.name}</h3>
+                            <p className="text-sm text-accent italic mb-3">{solution.tagline}</p>
+                            <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{solution.description}</p>
+                            <ul className="space-y-1.5">
+                              {solution.capabilities.map((cap) => (
+                                <li key={cap} className="flex items-start gap-2 text-xs text-muted-foreground">
+                                  <CheckCircle className="h-3.5 w-3.5 text-primary flex-shrink-0 mt-0.5" />
+                                  {cap}
+                                </li>
+                              ))}
+                            </ul>
+                          </Link>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </div>

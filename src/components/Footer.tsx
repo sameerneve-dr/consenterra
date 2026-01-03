@@ -1,5 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "@/assets/ConsenTerra_Logo.png";
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 
 const footerLinks = {
   company: [
@@ -19,16 +23,26 @@ const footerLinks = {
 };
 
 export default function Footer() {
+  const navigate = useNavigate();
+
+  const handleLinkClick = (href: string) => {
+    navigate(href);
+    scrollToTop();
+  };
+
   return (
     <footer className="border-t border-border bg-card">
       <div className="section-container py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
+            <button 
+              onClick={() => handleLinkClick("/")} 
+              className="flex items-center gap-2 mb-4"
+            >
               <img src={logo} alt="ConsenTerra" className="h-10 w-10" />
               <span className="text-lg font-semibold text-foreground">ConsenTerra</span>
-            </Link>
+            </button>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Clarity for Everyday Decisions. Empowering individuals and organizations with AI-driven insights.
             </p>
@@ -40,12 +54,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
+                  <button
+                    onClick={() => handleLinkClick(link.href)}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -57,12 +71,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.solutions.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
+                  <button
+                    onClick={() => handleLinkClick(link.href)}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -74,12 +88,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
+                  <button
+                    onClick={() => handleLinkClick(link.href)}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>
