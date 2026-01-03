@@ -1,13 +1,24 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/ConsenTerra_Logo.png";
+import RotatingHeadlinePhrase from "@/components/RotatingHeadlinePhrase";
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-24 lg:py-32">
+      <section className="py-20 lg:py-28">
         <div className="section-container">
           <div className="max-w-3xl animate-fade-in-up">
+            {/* Logo */}
+            <div className="mb-10">
+              <img
+                src={logo}
+                alt="ConsenTerra"
+                className="w-28 h-28 sm:w-32 sm:h-32"
+              />
+            </div>
+
             {/* Eyebrow Text */}
             <p className="text-xs tracking-[0.2em] text-muted-foreground mb-8 uppercase">
               CLARITY FOR EVERYDAY DECISIONS.
@@ -16,8 +27,7 @@ export default function Home() {
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-8">
               ConsenTerra builds simple AI tools<br />
-              for clarity in{" "}
-              <span className="text-gold-highlight">everyday decisions.</span>
+              for clarity in <RotatingHeadlinePhrase />
             </h1>
 
             {/* Subheading */}

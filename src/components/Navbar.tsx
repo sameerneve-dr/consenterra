@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import logo from "@/assets/ConsenTerra_Logo.png";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -39,8 +39,6 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const location = useLocation();
 
   const isActive = (href: string) => {
@@ -51,25 +49,29 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full bg-background">
       <nav className="section-container flex h-16 items-center justify-between">
-        {/* Text Logo */}
-        <Link to="/" className="text-xl font-semibold text-foreground hover:text-primary transition-colors">
-          ConsenTerra
+        {/* Logo + Text */}
+        <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <img src={logo} alt="ConsenTerra" className="h-9 w-9" />
+          <span className="text-lg font-semibold text-foreground">
+            ConsenTerra
+          </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-1">
+        {/* Desktop Navigation - Always visible, no hamburger */}
+        <div className="flex items-center gap-1">
           <NavigationMenu>
-            <NavigationMenuList>
+            <NavigationMenuList className="flex-wrap">
               {navLinks.map((link) =>
                 link.hasDropdown ? (
                   <NavigationMenuItem key={link.name}>
                     <NavigationMenuTrigger 
                       className={cn(
-                        "bg-transparent hover:bg-transparent hover:text-primary text-sm font-normal",
+                        "bg-transparent hover:bg-transparent hover:text-primary text-sm font-normal px-2 sm:px-4",
                         isActive(link.href) && "text-primary"
                       )}
                     >
-                      {link.name}
+                      <span className="hidden sm:inline">{link.name}</span>
+                      <span className="sm:hidden">Solutions</span>
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <ul className="w-[280px] p-2 bg-popover border border-border rounded-lg shadow-lg">
@@ -98,11 +100,15 @@ export default function Navbar() {
                     <Link
                       to={link.href}
                       className={cn(
-                        "inline-flex h-10 items-center justify-center px-4 py-2 text-sm font-normal transition-colors hover:text-primary",
+                        "inline-flex h-10 items-center justify-center px-2 sm:px-4 py-2 text-xs sm:text-sm font-normal transition-colors hover:text-primary whitespace-nowrap",
                         isActive(link.href) && "text-primary"
                       )}
                     >
-                      {link.name}
+                      <span className="hidden md:inline">{link.name}</span>
+                      <span className="md:hidden">
+                        {link.name === "Privacy Policy" ? "Privacy" : 
+                         link.name === "About Us" ? "About" : link.name}
+                      </span>
                     </Link>
                   </NavigationMenuItem>
                 )
@@ -110,71 +116,7 @@ export default function Navbar() {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="lg:hidden p-2 rounded-md hover:bg-secondary transition-colors"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
       </nav>
-
-      {/* Mobile Navigation */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden border-t border-border bg-background">
-          <div className="section-container py-4 space-y-1">
-            {navLinks.map((link) =>
-              link.hasDropdown ? (
-                <div key={link.name}>
-                  <button
-                    onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
-                    className={cn(
-                      "flex items-center justify-between w-full py-2 px-3 rounded-md text-sm transition-colors hover:bg-secondary",
-                      isActive(link.href) && "text-primary"
-                    )}
-                  >
-                    {link.name}
-                    <ChevronDown
-                      className={cn(
-                        "h-4 w-4 transition-transform",
-                        isSolutionsOpen && "rotate-180"
-                      )}
-                    />
-                  </button>
-                  {isSolutionsOpen && (
-                    <div className="pl-4 space-y-1 mt-1">
-                      {solutions.map((solution) => (
-                        <Link
-                          key={solution.title}
-                          to={solution.href}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="block py-2 px-3 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
-                        >
-                          {solution.title}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={cn(
-                    "block py-2 px-3 rounded-md text-sm transition-colors hover:bg-secondary",
-                    isActive(link.href) && "text-primary"
-                  )}
-                >
-                  {link.name}
-                </Link>
-              )
-            )}
-          </div>
-        </div>
-      )}
     </header>
   );
 }
