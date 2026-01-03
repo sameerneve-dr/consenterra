@@ -2,115 +2,136 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ConsenTerra Design System - Earth greens, deep charcoal, soft neutrals */
+/* ConsenTerra Design System - Editorial, calm, cream-green palette */
 
 @layer base {
   :root {
-    /* Core brand colors - Forest green & Earth tones */
-    --background: 45 30% 98%;
-    --foreground: 160 25% 12%;
+    /* Core brand colors - Cream background with olive/green accents */
+    --background: 48 40% 96%;
+    --foreground: 80 15% 25%;
 
-    --card: 45 25% 97%;
-    --card-foreground: 160 25% 12%;
+    --card: 48 35% 94%;
+    --card-foreground: 80 15% 25%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 160 25% 12%;
+    --popover: 48 40% 98%;
+    --popover-foreground: 80 15% 25%;
 
-    /* Primary - Deep Forest Green */
-    --primary: 150 35% 25%;
-    --primary-foreground: 45 30% 98%;
+    /* Primary - Muted Olive Green */
+    --primary: 85 25% 38%;
+    --primary-foreground: 48 40% 98%;
 
-    /* Secondary - Sage Earth Green */
-    --secondary: 100 20% 90%;
-    --secondary-foreground: 150 30% 20%;
+    /* Secondary - Light sage */
+    --secondary: 80 20% 92%;
+    --secondary-foreground: 85 25% 35%;
 
     /* Muted - Warm neutral */
-    --muted: 45 15% 92%;
-    --muted-foreground: 160 10% 45%;
+    --muted: 48 20% 90%;
+    --muted-foreground: 80 10% 45%;
 
-    /* Accent - Brighter green for CTAs */
-    --accent: 145 45% 35%;
-    --accent-foreground: 45 30% 98%;
+    /* Accent - Warm yellow-gold */
+    --accent: 42 85% 55%;
+    --accent-foreground: 80 20% 15%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 150 15% 85%;
-    --input: 150 15% 85%;
-    --ring: 150 35% 25%;
+    --border: 80 15% 88%;
+    --input: 80 15% 88%;
+    --ring: 85 25% 38%;
 
     --radius: 0.75rem;
 
     /* Sidebar */
-    --sidebar-background: 45 25% 97%;
-    --sidebar-foreground: 160 25% 12%;
-    --sidebar-primary: 150 35% 25%;
-    --sidebar-primary-foreground: 45 30% 98%;
-    --sidebar-accent: 100 20% 90%;
-    --sidebar-accent-foreground: 150 30% 20%;
-    --sidebar-border: 150 15% 85%;
-    --sidebar-ring: 150 35% 25%;
+    --sidebar-background: 48 35% 94%;
+    --sidebar-foreground: 80 15% 25%;
+    --sidebar-primary: 85 25% 38%;
+    --sidebar-primary-foreground: 48 40% 98%;
+    --sidebar-accent: 80 20% 92%;
+    --sidebar-accent-foreground: 85 25% 35%;
+    --sidebar-border: 80 15% 88%;
+    --sidebar-ring: 85 25% 38%;
 
     /* ConsenTerra Custom Tokens */
+    --olive: 85 25% 38%;
+    --olive-light: 80 20% 50%;
+    --gold: 42 85% 55%;
+    --gold-light: 45 80% 70%;
+    --sage: 80 20% 75%;
+    --cream: 48 40% 96%;
+    --charcoal: 80 15% 25%;
+    --earth: 80 25% 45%;
     --forest: 150 35% 25%;
     --forest-light: 145 30% 35%;
-    --earth: 80 25% 45%;
-    --sage: 100 20% 75%;
-    --charcoal: 160 20% 18%;
-    --cream: 45 30% 96%;
     --ocean: 200 60% 50%;
 
+    /* TrustEarthy specific colors */
+    --wood: 30 35% 45%;
+    --wood-light: 35 30% 60%;
+    --wood-dark: 25 40% 30%;
+    --eco-green: 120 30% 45%;
+    --eco-green-light: 115 35% 85%;
+
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(150 35% 25%) 0%, hsl(145 40% 30%) 50%, hsl(100 30% 40%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(45 30% 98%) 0%, hsl(45 25% 95%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(45 25% 97%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(48 40% 96%) 0%, hsl(80 20% 92%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(48 40% 96%) 0%, hsl(48 35% 94%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(48 40% 98%) 0%, hsl(48 35% 94%) 100%);
   }
 
   .dark {
-    --background: 160 25% 8%;
-    --foreground: 45 25% 95%;
+    --background: 80 15% 8%;
+    --foreground: 48 25% 95%;
 
-    --card: 160 20% 12%;
-    --card-foreground: 45 25% 95%;
+    --card: 80 12% 12%;
+    --card-foreground: 48 25% 95%;
 
-    --popover: 160 20% 10%;
-    --popover-foreground: 45 25% 95%;
+    --popover: 80 12% 10%;
+    --popover-foreground: 48 25% 95%;
 
-    --primary: 145 45% 45%;
-    --primary-foreground: 160 25% 8%;
+    --primary: 85 35% 55%;
+    --primary-foreground: 80 15% 8%;
 
-    --secondary: 150 20% 18%;
-    --secondary-foreground: 45 25% 90%;
+    --secondary: 80 15% 18%;
+    --secondary-foreground: 48 25% 90%;
 
-    --muted: 160 15% 18%;
-    --muted-foreground: 45 15% 60%;
+    --muted: 80 12% 18%;
+    --muted-foreground: 48 15% 60%;
 
-    --accent: 145 50% 50%;
-    --accent-foreground: 160 25% 8%;
+    --accent: 42 80% 60%;
+    --accent-foreground: 80 15% 8%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 160 15% 20%;
-    --input: 160 15% 20%;
-    --ring: 145 45% 45%;
+    --border: 80 12% 20%;
+    --input: 80 12% 20%;
+    --ring: 85 35% 55%;
 
-    --sidebar-background: 160 20% 10%;
-    --sidebar-foreground: 45 25% 95%;
-    --sidebar-primary: 145 45% 45%;
-    --sidebar-primary-foreground: 160 25% 8%;
-    --sidebar-accent: 150 20% 18%;
-    --sidebar-accent-foreground: 45 25% 90%;
-    --sidebar-border: 160 15% 20%;
-    --sidebar-ring: 145 45% 45%;
+    --sidebar-background: 80 12% 10%;
+    --sidebar-foreground: 48 25% 95%;
+    --sidebar-primary: 85 35% 55%;
+    --sidebar-primary-foreground: 80 15% 8%;
+    --sidebar-accent: 80 15% 18%;
+    --sidebar-accent-foreground: 48 25% 90%;
+    --sidebar-border: 80 12% 20%;
+    --sidebar-ring: 85 35% 55%;
 
+    --olive: 85 35% 55%;
+    --olive-light: 80 30% 65%;
+    --gold: 42 80% 60%;
+    --gold-light: 45 75% 75%;
+    --sage: 80 20% 35%;
+    --cream: 80 12% 12%;
+    --charcoal: 48 20% 85%;
+    --earth: 80 30% 55%;
     --forest: 145 45% 45%;
     --forest-light: 145 40% 55%;
-    --earth: 80 30% 55%;
-    --sage: 100 25% 35%;
-    --charcoal: 45 20% 85%;
-    --cream: 160 15% 12%;
     --ocean: 200 55% 55%;
+
+    --wood: 30 30% 55%;
+    --wood-light: 35 25% 65%;
+    --wood-dark: 25 35% 40%;
+    --eco-green: 120 35% 55%;
+    --eco-green-light: 115 30% 25%;
   }
 }
 
@@ -132,7 +153,7 @@
 @layer components {
   /* Hero button variant styles */
   .btn-hero {
-    @apply bg-primary text-primary-foreground hover:bg-forest-light shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply bg-primary text-primary-foreground hover:bg-olive-light shadow-md hover:shadow-lg transition-all duration-300;
   }
 
   .btn-hero-outline {
@@ -146,7 +167,16 @@
 
   /* Gradient text */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-forest to-earth;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-olive to-earth;
+  }
+
+  /* Gold highlight text */
+  .text-gold-highlight {
+    @apply text-gold italic;
+    text-decoration: underline;
+    text-decoration-color: hsl(var(--gold));
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
   }
 
   /* Fun fact card flip animation */
@@ -188,7 +218,46 @@
 
   /* Section container */
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-6xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
+
+  /* Editorial text container */
+  .prose-editorial {
+    @apply max-w-3xl text-muted-foreground leading-relaxed;
+  }
+
+  .prose-editorial p {
+    @apply mb-6;
+  }
+
+  /* TrustEarthy closet styles */
+  .closet-door {
+    @apply relative cursor-pointer transition-all duration-300;
+    background: linear-gradient(145deg, hsl(var(--wood-light)) 0%, hsl(var(--wood)) 50%, hsl(var(--wood-dark)) 100%);
+    box-shadow: 
+      inset 2px 2px 4px rgba(255,255,255,0.2),
+      inset -2px -2px 4px rgba(0,0,0,0.2),
+      3px 3px 8px rgba(0,0,0,0.2);
+  }
+
+  .closet-door:hover {
+    transform: scale(1.02);
+    box-shadow: 
+      inset 2px 2px 4px rgba(255,255,255,0.25),
+      inset -2px -2px 4px rgba(0,0,0,0.25),
+      5px 5px 12px rgba(0,0,0,0.25);
+  }
+
+  .closet-door-open {
+    background: linear-gradient(145deg, hsl(var(--eco-green-light)) 0%, hsl(48 40% 95%) 100%);
+    box-shadow: 
+      inset 2px 2px 4px rgba(0,0,0,0.05),
+      2px 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .closet-shelf {
+    background: linear-gradient(180deg, hsl(var(--wood)) 0%, hsl(var(--wood-dark)) 100%);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   }
 }
 
@@ -253,5 +322,19 @@
     50% {
       opacity: 0.85;
     }
+  }
+
+  @keyframes doorOpen {
+    0% {
+      transform: perspective(800px) rotateY(0deg);
+    }
+    100% {
+      transform: perspective(800px) rotateY(-105deg);
+    }
+  }
+
+  .animate-door-open {
+    animation: doorOpen 0.5s ease-out forwards;
+    transform-origin: left center;
   }
 }

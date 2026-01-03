@@ -62,15 +62,33 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         // ConsenTerra custom colors
+        olive: {
+          DEFAULT: "hsl(var(--olive))",
+          light: "hsl(var(--olive-light))",
+        },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
+        },
+        sage: "hsl(var(--sage))",
+        charcoal: "hsl(var(--charcoal))",
+        cream: "hsl(var(--cream))",
+        earth: "hsl(var(--earth))",
         forest: {
           DEFAULT: "hsl(var(--forest))",
           light: "hsl(var(--forest-light))",
         },
-        earth: "hsl(var(--earth))",
-        sage: "hsl(var(--sage))",
-        charcoal: "hsl(var(--charcoal))",
-        cream: "hsl(var(--cream))",
         ocean: "hsl(var(--ocean))",
+        // TrustEarthy colors
+        wood: {
+          DEFAULT: "hsl(var(--wood))",
+          light: "hsl(var(--wood-light))",
+          dark: "hsl(var(--wood-dark))",
+        },
+        "eco-green": {
+          DEFAULT: "hsl(var(--eco-green))",
+          light: "hsl(var(--eco-green-light))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
