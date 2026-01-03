@@ -1,21 +1,73 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { ChevronDown, Shield, Rocket, Leaf, CheckCircle } from "lucide-react";
 import logo from "@/assets/ConsenTerra_Logo.png";
 import RotatingHeadlinePhrase from "@/components/RotatingHeadlinePhrase";
 
+const solutions = [
+  {
+    id: "prixplainer",
+    name: "PriXplainer",
+    tagline: "Understand before you consent.",
+    description: "PriXplainer decodes privacy policies and terms of service using AI-driven analysis, risk indicators, and human-readable summaries—making invisible data practices visible.",
+    capabilities: [
+      "AI-generated policy summaries",
+      "Risk and severity indicators",
+      "Ontology-based clause classification",
+      "User-centric explanations (no legal jargon)"
+    ],
+    icon: Shield,
+    href: "/solutions/prixplainer",
+    color: "text-primary"
+  },
+  {
+    id: "foundrfate",
+    name: "FoundrFATE",
+    tagline: "Founder success shouldn't feel like luck.",
+    description: "FoundrFATE helps early-stage founders understand the forces shaping their journey—before those forces decide for them.",
+    capabilities: [
+      "Funding readiness assessment",
+      "Investor education & outreach guidance",
+      "Plain-language fundraising explanations",
+      "Founder-first, bias-aware design"
+    ],
+    icon: Rocket,
+    href: "/solutions/foundrfate",
+    color: "text-ocean"
+  },
+  {
+    id: "trustearthy",
+    name: "TrustEarthy",
+    tagline: "Small swaps. Real impact.",
+    description: "TrustEarthy helps users make sustainable consumption choices through trusted comparisons, impact snapshots, and habit-friendly recommendations.",
+    capabilities: [
+      "Sustainable product comparisons",
+      "Impact snapshots",
+      "Practical, low-overwhelm education",
+      "Habit-based nudges"
+    ],
+    icon: Leaf,
+    href: "/solutions/trustearthy",
+    color: "text-forest"
+  }
+];
+
 export default function Home() {
+  const [showSolutions, setShowSolutions] = useState(false);
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="py-20 lg:py-28">
         <div className="section-container">
-          <div className="max-w-3xl animate-fade-in-up">
-            {/* Logo */}
-            <div className="mb-10">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+            {/* Logo - Large and Centered */}
+            <div className="mb-10 flex justify-center">
               <img
                 src={logo}
                 alt="ConsenTerra"
-                className="w-28 h-28 sm:w-32 sm:h-32"
+                className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56"
               />
             </div>
 
@@ -31,7 +83,7 @@ export default function Home() {
             </h1>
 
             {/* Subheading */}
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-4 leading-relaxed">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 leading-relaxed">
               Privacy, early-stage entrepreneurship, and sustainable living,<br />
               explained without the noise.
             </p>
@@ -41,15 +93,61 @@ export default function Home() {
               Less guesswork. More clear choices.
             </p>
 
-            {/* CTA Button */}
-            <Button asChild size="lg" className="rounded-full px-8 text-base">
-              <Link to="/solutions">
+            {/* Solutions Button */}
+            <div className="relative inline-block">
+              <Button 
+                size="lg" 
+                className="rounded-full px-8 text-base"
+                onClick={() => setShowSolutions(!showSolutions)}
+              >
                 Explore our tools
-              </Link>
-            </Button>
+                <ChevronDown className={`ml-2 h-4 w-4 transition-transform duration-200 ${showSolutions ? 'rotate-180' : ''}`} />
+              </Button>
+
+              {/* Solutions Dropdown */}
+              {showSolutions && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[90vw] max-w-4xl bg-card border border-border rounded-2xl shadow-xl p-6 z-50 animate-fade-in">
+                  <div className="grid md:grid-cols-3 gap-6">
+                    {solutions.map((solution) => {
+                      const Icon = solution.icon;
+                      return (
+                        <Link
+                          key={solution.id}
+                          to={solution.href}
+                          className="group p-5 bg-background rounded-xl border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-md text-left"
+                        >
+                          <div className={`inline-flex p-2 rounded-lg bg-primary/10 mb-3 ${solution.color}`}>
+                            <Icon className="h-5 w-5" />
+                          </div>
+                          <h3 className="text-lg font-semibold text-foreground mb-1">{solution.name}</h3>
+                          <p className="text-sm text-accent italic mb-3">{solution.tagline}</p>
+                          <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{solution.description}</p>
+                          <ul className="space-y-1.5">
+                            {solution.capabilities.map((cap) => (
+                              <li key={cap} className="flex items-start gap-2 text-xs text-muted-foreground">
+                                <CheckCircle className="h-3.5 w-3.5 text-primary flex-shrink-0 mt-0.5" />
+                                {cap}
+                              </li>
+                            ))}
+                          </ul>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
+
+      {/* Click outside to close */}
+      {showSolutions && (
+        <div 
+          className="fixed inset-0 z-40" 
+          onClick={() => setShowSolutions(false)}
+        />
+      )}
 
       {/* Welcome Section */}
       <section className="py-20 lg:py-28">
