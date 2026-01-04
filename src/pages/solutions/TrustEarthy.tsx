@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { X, ShoppingCart, Leaf } from "lucide-react";
+import { X, ShoppingCart, Leaf, ArrowRight, Sparkles, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -639,69 +639,102 @@ export default function TrustEarthy() {
 
       {/* Detail Modal */}
       <Dialog open={!!selectedDay} onOpenChange={() => setSelectedDay(null)}>
-        <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2 text-xl">
-              <Leaf className="h-5 w-5 text-eco-green" />
-              Day {selectedDay?.day_number} Swap
-            </DialogTitle>
-          </DialogHeader>
-          
+        <DialogContent className="max-w-md p-0 overflow-hidden border-0 bg-transparent shadow-2xl">
           {selectedDay && (
-            <div className="space-y-6">
-              {/* Conventional Product */}
-              <div className="bg-muted/50 rounded-lg p-4">
-                <p className="text-xs uppercase tracking-wide text-muted-foreground mb-1">
-                  Instead of
-                </p>
-                <p className="font-medium text-foreground">
-                  {selectedDay.conventional_product.name}
-                </p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {selectedDay.conventional_product.description}
-                </p>
-              </div>
-
-              {/* Arrow */}
-              <div className="flex justify-center">
-                <div className="w-8 h-8 rounded-full bg-eco-green/10 flex items-center justify-center">
-                  <span className="text-eco-green text-lg">↓</span>
+            <div className="relative">
+              {/* Header with day badge */}
+              <div className="bg-gradient-to-br from-eco-green to-eco-green/80 p-6 text-white relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+                
+                <div className="relative z-10 flex items-center gap-4">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm">
+                    <span className="text-3xl font-bold">{selectedDay.day_number}</span>
+                  </div>
+                  <div>
+                    <p className="text-white/80 text-sm uppercase tracking-wider font-medium">Day</p>
+                    <p className="text-xl font-bold">Sustainable Swap</p>
+                  </div>
                 </div>
               </div>
 
-              {/* Sustainable Alternative */}
-              <div className="bg-eco-green/5 border border-eco-green/20 rounded-lg p-4">
-                <p className="text-xs uppercase tracking-wide text-eco-green mb-1">
-                  Try this
-                </p>
-                <h3 className="text-lg font-semibold text-foreground mb-3">
-                  {selectedDay.sustainable_alternative.name}
-                </h3>
-                
-                <ul className="space-y-2">
-                  {selectedDay.sustainable_alternative.metrics.map((metric, idx) => (
-                    <li key={idx} className="flex gap-2 text-sm text-muted-foreground">
-                      <span className="text-eco-green mt-0.5">•</span>
-                      <span>{metric}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <div className="bg-card p-6 space-y-5">
+                {/* VS Comparison */}
+                <div className="grid grid-cols-2 gap-4 relative">
+                  {/* Conventional - Left side */}
+                  <div className="bg-muted/60 rounded-xl p-4 border border-border/50 relative">
+                    <div className="absolute -top-3 left-4 px-2 py-0.5 bg-destructive/10 text-destructive text-xs font-semibold uppercase tracking-wide rounded-full">
+                      ✕ Avoid
+                    </div>
+                    <div className="mt-2 flex flex-col items-center text-center">
+                      <div className="w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center mb-3">
+                        <X className="h-6 w-6 text-destructive" />
+                      </div>
+                      <p className="font-semibold text-foreground text-sm leading-tight">
+                        {selectedDay.conventional_product.name}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-2 line-clamp-2">
+                        {selectedDay.conventional_product.description}
+                      </p>
+                    </div>
+                  </div>
 
-              {/* Purchase Link */}
-              {selectedDay.sustainable_alternative.purchase_link_query && (
-                <Button asChild className="w-full bg-eco-green hover:bg-eco-green/90">
-                  <a 
-                    href={selectedDay.sustainable_alternative.purchase_link_query}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2"
-                  >
-                    <ShoppingCart className="h-4 w-4" />
-                    Buy on Amazon
-                  </a>
-                </Button>
-              )}
+                  {/* VS Badge */}
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                    <div className="w-10 h-10 rounded-full bg-card border-2 border-eco-green shadow-lg flex items-center justify-center">
+                      <ArrowRight className="h-5 w-5 text-eco-green" />
+                    </div>
+                  </div>
+
+                  {/* Sustainable - Right side */}
+                  <div className="bg-eco-green/5 rounded-xl p-4 border-2 border-eco-green/30 relative">
+                    <div className="absolute -top-3 left-4 px-2 py-0.5 bg-eco-green text-white text-xs font-semibold uppercase tracking-wide rounded-full">
+                      ✓ Choose
+                    </div>
+                    <div className="mt-2 flex flex-col items-center text-center">
+                      <div className="w-12 h-12 rounded-full bg-eco-green/20 flex items-center justify-center mb-3">
+                        <Leaf className="h-6 w-6 text-eco-green" />
+                      </div>
+                      <p className="font-semibold text-foreground text-sm leading-tight">
+                        {selectedDay.sustainable_alternative.name}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Benefits */}
+                <div className="bg-gradient-to-r from-eco-green/5 to-transparent rounded-xl p-4 border border-eco-green/20">
+                  <p className="text-xs uppercase tracking-wider text-eco-green font-semibold mb-3 flex items-center gap-2">
+                    <Sparkles className="h-4 w-4" />
+                    Why it's better
+                  </p>
+                  <div className="space-y-2">
+                    {selectedDay.sustainable_alternative.metrics.slice(0, 3).map((metric, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-eco-green/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <Check className="h-3 w-3 text-eco-green" />
+                        </div>
+                        <span className="text-sm text-foreground/80">{metric}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Purchase Link */}
+                {selectedDay.sustainable_alternative.purchase_link_query && (
+                  <Button asChild className="w-full h-12 bg-eco-green hover:bg-eco-green/90 text-base font-semibold shadow-lg shadow-eco-green/20">
+                    <a 
+                      href={selectedDay.sustainable_alternative.purchase_link_query}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2"
+                    >
+                      <ShoppingCart className="h-5 w-5" />
+                      Shop Sustainable Option
+                    </a>
+                  </Button>
+                )}
+              </div>
             </div>
           )}
         </DialogContent>
