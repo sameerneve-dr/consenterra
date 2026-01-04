@@ -51,7 +51,7 @@ export default function Solutions() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="py-16 lg:py-24 bg-gradient-subtle">
+      <section className="py-16 lg:py-24">
         <div className="section-container text-center animate-fade-in-up">
           <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
             Our Solutions
@@ -64,7 +64,7 @@ export default function Solutions() {
       </section>
 
       {/* Solutions Grid */}
-      <section className="py-20 bg-background">
+      <section className="py-20">
         <div className="section-container">
           <div className="space-y-16 max-w-5xl mx-auto">
             {solutions.map((solution, index) => (
@@ -124,7 +124,7 @@ export default function Solutions() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-card">
+      <section className="py-16">
         <div className="section-container text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
             Interested in our solutions?

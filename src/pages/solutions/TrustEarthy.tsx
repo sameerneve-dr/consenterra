@@ -564,7 +564,7 @@ export default function TrustEarthy() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-12 lg:py-16">
         <div className="section-container text-center">

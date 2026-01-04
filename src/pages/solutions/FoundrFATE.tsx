@@ -44,7 +44,7 @@ export default function FoundrFATE() {
       </section>
 
       {/* The Challenge */}
-      <section className="py-16 bg-background">
+      <section className="py-16">
         <div className="section-container">
           <div className="max-w-3xl mx-auto">
             <div className="flex items-start gap-4 p-6 bg-ocean/5 border border-ocean/20 rounded-xl">
@@ -63,7 +63,7 @@ export default function FoundrFATE() {
       </section>
 
       {/* Features */}
-      <section className="py-20 bg-card">
+      <section className="py-20">
         <div className="section-container">
           <h2 className="text-3xl font-bold text-foreground text-center mb-12">
             Key Capabilities
@@ -86,7 +86,7 @@ export default function FoundrFATE() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-background">
+      <section className="py-16">
         <div className="section-container text-center">
           <h2 className="text-2xl font-bold text-foreground mb-4">
             Ready to take control of your founder journey?

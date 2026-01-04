@@ -30,7 +30,7 @@ export default function Contact() {
   if (isSubmitted) {
     return (
       <div className="flex flex-col min-h-[70vh]">
-        <section className="flex-1 flex items-center justify-center py-20 bg-gradient-subtle">
+        <section className="flex-1 flex items-center justify-center py-20">
           <div className="section-container">
             <div className="max-w-lg mx-auto text-center animate-scale-in">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-6">
@@ -55,7 +55,7 @@ export default function Contact() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="py-16 lg:py-20 bg-gradient-subtle">
+      <section className="py-16 lg:py-20">
         <div className="section-container text-center animate-fade-in-up">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-6">
             <Mail className="h-7 w-7" />
@@ -70,7 +70,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Form */}
-      <section className="py-16 bg-background">
+      <section className="py-16">
         <div className="section-container">
           <div className="max-w-xl mx-auto">
             <form onSubmit={handleSubmit} className="space-y-6">

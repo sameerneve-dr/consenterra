@@ -30,7 +30,7 @@ export default function About() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-subtle">
+      <section className="py-16 lg:py-24">
         <div className="section-container text-center animate-fade-in-up">
           <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
             About ConsenTerra
@@ -42,7 +42,7 @@ export default function About() {
       </section>
 
       {/* Start With Why - Golden Circle */}
-      <section className="py-20 bg-background">
+      <section className="py-20">
         <div className="section-container">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-foreground text-center mb-12">
@@ -100,7 +100,7 @@ export default function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-card">
+      <section className="py-20">
         <div className="section-container">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
             {/* Mission */}
@@ -136,7 +136,7 @@ export default function About() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-background">
+      <section className="py-20">
         <div className="section-container">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">

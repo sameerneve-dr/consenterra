@@ -6,7 +6,7 @@ export default function Privacy() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="py-12 lg:py-16 bg-gradient-subtle">
+      <section className="py-12 lg:py-16">
         <div className="section-container">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl font-bold text-foreground mb-4">
@@ -26,7 +26,7 @@ export default function Privacy() {
       </section>
 
       {/* Content */}
-      <section className="py-12 lg:py-16 bg-background">
+      <section className="py-12 lg:py-16">
         <div className="section-container">
           <div className="max-w-3xl mx-auto prose prose-slate">
             {/* Introduction */}
@@ -146,7 +146,7 @@ export default function Privacy() {
       </section>
 
       {/* CTA */}
-      <section className="py-12 bg-card">
+      <section className="py-12">
         <div className="section-container text-center">
           <p className="text-muted-foreground mb-4">
             Have questions about our privacy practices?

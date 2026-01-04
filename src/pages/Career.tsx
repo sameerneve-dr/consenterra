@@ -27,7 +27,7 @@ export default function Career() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="py-16 lg:py-24 bg-gradient-subtle">
+      <section className="py-16 lg:py-24">
         <div className="section-container text-center animate-fade-in-up">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-6">
             <Briefcase className="h-7 w-7" />
@@ -42,7 +42,7 @@ export default function Career() {
       </section>
 
       {/* About ConsenTerra */}
-      <section className="py-12 bg-background">
+      <section className="py-12">
         <div className="section-container">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl font-bold text-foreground mb-4">About ConsenTerra</h2>
@@ -57,7 +57,7 @@ export default function Career() {
       </section>
 
       {/* Open Role */}
-      <section className="py-16 bg-card">
+      <section className="py-16">
         <div className="section-container">
           <div className="max-w-4xl mx-auto">
             {/* Role Header */}
