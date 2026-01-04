@@ -12,7 +12,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <div 
-      className="min-h-screen flex flex-col"
+      className="min-h-screen flex flex-col relative"
       style={{
         backgroundImage: `url(${heroBackground})`,
         backgroundSize: 'cover',
@@ -21,11 +21,16 @@ export default function Layout({ children }: LayoutProps) {
         backgroundAttachment: 'fixed'
       }}
     >
-      <ScrollToTop />
-      <Navbar />
-      <main className="flex-1">{children}</main>
-      <Footer />
-      <CookieConsent />
+      {/* Semi-transparent overlay for better text readability */}
+      <div className="absolute inset-0 bg-white/70 pointer-events-none" style={{ zIndex: 0 }} />
+      
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <ScrollToTop />
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <CookieConsent />
+      </div>
     </div>
   );
 }
