@@ -33,7 +33,6 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Solutions", href: "/solutions", hasDropdown: true },
-  { name: "Privacy Policy", href: "/privacy" },
   { name: "Career", href: "/career" },
   { name: "Contact", href: "/contact" },
 ];
