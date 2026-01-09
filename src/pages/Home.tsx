@@ -73,7 +73,7 @@ export default function Home() {
             </div>
 
             {/* Right Side - Content */}
-            <div className="text-center lg:text-left">
+            <div className="text-center lg:text-left flex flex-col">
               {/* Eyebrow Text */}
               <p className="text-xs tracking-[0.2em] text-muted-foreground mb-6 uppercase">
                 CLARITY FOR EVERYDAY DECISIONS.
@@ -97,7 +97,7 @@ export default function Home() {
               </p>
 
               {/* Solutions Button */}
-              <div className="relative inline-block">
+              <div className="inline-block">
                 <Button 
                   size="lg" 
                   className="rounded-full px-8 text-base"
@@ -107,39 +107,40 @@ export default function Home() {
                   <ChevronDown className={`ml-2 h-4 w-4 transition-transform duration-200 ${showSolutions ? 'rotate-180' : ''}`} />
                 </Button>
 
-                {/* Solutions Dropdown */}
-                {showSolutions && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 mt-4 w-[90vw] max-w-4xl bg-card border border-border rounded-2xl shadow-xl p-6 z-50 animate-fade-in">
-                    <div className="grid md:grid-cols-3 gap-6">
-                      {solutions.map((solution) => {
-                        const Icon = solution.icon;
-                        return (
-                          <Link
-                            key={solution.id}
-                            to={solution.href}
-                            className="group p-5 bg-background rounded-xl border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-md text-left"
-                          >
-                            <div className={`inline-flex p-2 rounded-lg bg-primary/10 mb-3 ${solution.color}`}>
-                              <Icon className="h-5 w-5" />
-                            </div>
-                            <h3 className="text-lg font-semibold text-foreground mb-1">{solution.name}</h3>
-                            <p className="text-sm text-accent italic mb-3">{solution.tagline}</p>
-                            <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{solution.description}</p>
-                            <ul className="space-y-1.5">
-                              {solution.capabilities.map((cap) => (
-                                <li key={cap} className="flex items-start gap-2 text-xs text-muted-foreground">
-                                  <CheckCircle className="h-3.5 w-3.5 text-primary flex-shrink-0 mt-0.5" />
-                                  {cap}
-                                </li>
-                              ))}
-                            </ul>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
               </div>
+
+              {/* Solutions Dropdown - Positioned below button */}
+              {showSolutions && (
+                <div className="mt-6 w-full max-w-4xl mx-auto lg:mx-0 bg-white/95 backdrop-blur-sm border border-border rounded-2xl shadow-2xl p-6 animate-fade-in relative z-50">
+                  <div className="grid md:grid-cols-3 gap-6">
+                    {solutions.map((solution) => {
+                      const Icon = solution.icon;
+                      return (
+                        <Link
+                          key={solution.id}
+                          to={solution.href}
+                          className="group p-5 bg-background/80 rounded-xl border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-md text-left"
+                        >
+                          <div className={`inline-flex p-2 rounded-lg bg-primary/10 mb-3 ${solution.color}`}>
+                            <Icon className="h-5 w-5" />
+                          </div>
+                          <h3 className="text-lg font-semibold text-foreground mb-1">{solution.name}</h3>
+                          <p className="text-sm text-accent italic mb-3">{solution.tagline}</p>
+                          <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{solution.description}</p>
+                          <ul className="space-y-1.5">
+                            {solution.capabilities.map((cap) => (
+                              <li key={cap} className="flex items-start gap-2 text-xs text-muted-foreground">
+                                <CheckCircle className="h-3.5 w-3.5 text-primary flex-shrink-0 mt-0.5" />
+                                {cap}
+                              </li>
+                            ))}
+                          </ul>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
