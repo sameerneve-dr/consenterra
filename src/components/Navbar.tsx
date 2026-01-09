@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown } from "lucide-react";
 import logo from "@/assets/ConsenTerra_Logo.png";
 import {
   NavigationMenu,
@@ -10,6 +9,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import UserMenu from "@/components/UserMenu";
 
 const solutions = [
   {
@@ -125,6 +125,9 @@ export default function Navbar() {
               )}
             </NavigationMenuList>
           </NavigationMenu>
+          
+          {/* User Menu */}
+          <UserMenu />
         </div>
       </nav>
     </header>

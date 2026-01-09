@@ -1,6 +1,30 @@
 import { Link } from "react-router-dom";
 import { Rocket, CheckCircle, Target, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import DemoCarousel from "@/components/DemoCarousel";
+
+const demoSlides = [
+  {
+    title: "Share Your Startup Story",
+    description: "Tell us about your startup, your market, your team, and where you are in your journey. FoundrFATE adapts to your unique situation.",
+    highlight: "Designed for founders at any stage—from idea validation to Series A."
+  },
+  {
+    title: "Funding Readiness Assessment",
+    description: "Get an honest evaluation of your funding readiness across key dimensions: market opportunity, team strength, traction, and financials.",
+    highlight: "Benchmarked against thousands of successful (and unsuccessful) funding rounds."
+  },
+  {
+    title: "Investor Match & Education",
+    description: "Learn which types of investors are the best fit for your stage and sector. Understand what VCs, angels, and accelerators are really looking for.",
+    highlight: "Plain-language explanations of term sheets, valuations, and deal structures."
+  },
+  {
+    title: "Your Personalized Roadmap",
+    description: "Receive a clear action plan with specific steps to improve your chances of successful fundraising. No more guessing what to do next.",
+    highlight: "Built with bias awareness to support underrepresented founders."
+  }
+];
 
 const features = [
   {
@@ -84,6 +108,13 @@ export default function FoundrFATE() {
           </div>
         </div>
       </section>
+
+      {/* Demo Carousel */}
+      <DemoCarousel 
+        slides={demoSlides}
+        title="See FoundrFATE in Action"
+        subtitle="Discover how FoundrFATE helps early-stage founders navigate fundraising with clarity and confidence."
+      />
 
       {/* CTA */}
       <section className="py-16">
