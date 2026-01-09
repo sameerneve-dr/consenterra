@@ -1,6 +1,30 @@
 import { Link } from "react-router-dom";
 import { Shield, CheckCircle, AlertTriangle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import DemoCarousel from "@/components/DemoCarousel";
+
+const demoSlides = [
+  {
+    title: "Paste Any Privacy Policy",
+    description: "Simply paste the URL or text of any privacy policy or terms of service. PriXplainer works with policies from any website or app.",
+    highlight: "Works with policies from Google, Facebook, Instagram, and thousands of other services."
+  },
+  {
+    title: "AI-Powered Analysis",
+    description: "Our advanced AI engine reads and analyzes the entire document, identifying key clauses about data collection, sharing, and your rights.",
+    highlight: "Powered by privacy-focused ontologies developed by legal and privacy experts."
+  },
+  {
+    title: "See Risk Indicators",
+    description: "Visual severity indicators highlight concerning practices at a glance. Red flags for high-risk clauses, yellow for moderate concerns, and green for user-friendly terms.",
+    highlight: "Each risk is explained in plain language so you understand exactly what it means for you."
+  },
+  {
+    title: "Get Your Summary",
+    description: "Receive a clear, human-readable summary of what the policy actually says about your data. No more legal jargon—just the facts you need to make informed decisions.",
+    highlight: "Typical 18-minute read condensed to 2 minutes of actionable insights."
+  }
+];
 
 const features = [
   {
@@ -84,6 +108,13 @@ export default function PriXplainer() {
           </div>
         </div>
       </section>
+
+      {/* Demo Carousel */}
+      <DemoCarousel 
+        slides={demoSlides}
+        title="See PriXplainer in Action"
+        subtitle="Discover how PriXplainer transforms complex privacy policies into clear, actionable insights in just four simple steps."
+      />
 
       {/* CTA */}
       <section className="py-16">

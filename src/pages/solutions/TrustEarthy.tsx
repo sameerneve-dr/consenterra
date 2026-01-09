@@ -7,6 +7,30 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import DemoCarousel from "@/components/DemoCarousel";
+
+const demoSlides = [
+  {
+    title: "Browse the 30-Day Challenge",
+    description: "Each day reveals a new sustainable swap—from water bottles to cleaning products. Open doors to discover what everyday items you can replace.",
+    highlight: "Start anywhere! Each swap is independent and easy to adopt."
+  },
+  {
+    title: "Learn Why It Matters",
+    description: "Every swap comes with clear impact metrics. See exactly how much plastic, carbon, or money you'll save by making the switch.",
+    highlight: "No greenwashing—just honest, researched facts about each product."
+  },
+  {
+    title: "Shop Sustainably",
+    description: "Found a swap you love? Click through to find trusted sustainable alternatives. We curate options so you don't have to research endlessly.",
+    highlight: "Direct links to quality products that actually make a difference."
+  },
+  {
+    title: "Build Lasting Habits",
+    description: "Small changes compound into big impact. Track your progress and watch your environmental footprint shrink over 30 days and beyond.",
+    highlight: "Designed for real life—practical swaps anyone can make."
+  }
+];
 
 interface SwapData {
   day_number: number;
@@ -580,6 +604,13 @@ export default function TrustEarthy() {
           </p>
         </div>
       </section>
+
+      {/* Demo Carousel */}
+      <DemoCarousel 
+        slides={demoSlides}
+        title="How TrustEarthy Works"
+        subtitle="Discover how small sustainable swaps can create big environmental impact—one day at a time."
+      />
 
       {/* Closet Shelves */}
       <section className="pb-16">
