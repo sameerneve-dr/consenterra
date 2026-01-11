@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import CookieConsent from "./CookieConsent";
 import ScrollToTop from "./ScrollToTop";
-import heroBackground from "@/assets/hero-background.png";
+import PageTransition from "./PageTransition";
 
 interface LayoutProps {
   children: ReactNode;
@@ -11,23 +11,27 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div 
-      className="min-h-screen flex flex-col relative"
-      style={{
-        backgroundImage: `url(${heroBackground})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed'
-      }}
-    >
-      {/* Semi-transparent overlay for better text readability */}
-      <div className="absolute inset-0 bg-white/70 pointer-events-none" style={{ zIndex: 0 }} />
+    <div className="min-h-screen flex flex-col relative bg-background">
+      {/* Subtle grid pattern overlay */}
+      <div 
+        className="fixed inset-0 pointer-events-none opacity-[0.02]"
+        style={{
+          backgroundImage: `
+            linear-gradient(hsl(270 70% 70%) 1px, transparent 1px),
+            linear-gradient(90deg, hsl(270 70% 70%) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+        }}
+      />
       
       <div className="relative z-10 flex flex-col min-h-screen">
         <ScrollToTop />
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          <PageTransition>
+            {children}
+          </PageTransition>
+        </main>
         <Footer />
         <CookieConsent />
       </div>
