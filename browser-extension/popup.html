@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PriXplainer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 360px;
+      min-height: 400px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0f0f1a 100%);
+      color: #ffffff;
+      padding: 20px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(74, 222, 128, 0.2);
+    }
+
+    .logo {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 600;
+      background: linear-gradient(90deg, #4ade80, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .domain-display {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .domain-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 4px;
+    }
+
+    .domain-name {
+      font-size: 16px;
+      font-weight: 500;
+      color: #4ade80;
+      word-break: break-all;
+    }
+
+    .scan-btn {
+      width: 100%;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+      border: none;
+      border-radius: 12px;
+      color: #0a0a0f;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .scan-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
+    }
+
+    .scan-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .scanning {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 3px solid rgba(74, 222, 128, 0.2);
+      border-top-color: #4ade80;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 16px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .scanning-text {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+    }
+
+    .results {
+      display: none;
+    }
+
+    .results.visible {
+      display: block;
+    }
+
+    .score-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 16px;
+      border: 1px solid rgba(74, 222, 128, 0.2);
+    }
+
+    .score-value {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .score-value.high { color: #4ade80; }
+    .score-value.medium { color: #fbbf24; }
+    .score-value.low { color: #ef4444; }
+
+    .score-label {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .risk-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+
+    .risk-badge.low {
+      background: rgba(74, 222, 128, 0.2);
+      color: #4ade80;
+      border: 1px solid rgba(74, 222, 128, 0.4);
+    }
+
+    .risk-badge.medium {
+      background: rgba(251, 191, 36, 0.2);
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.4);
+    }
+
+    .risk-badge.high {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+    }
+
+    .summary {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .section {
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #4ade80;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .risk-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .risk-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .risk-icon {
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .action-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .action-btn.primary {
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+      border: none;
+      color: #0a0a0f;
+    }
+
+    .action-btn.secondary {
+      background: transparent;
+      border: 1px solid rgba(74, 222, 128, 0.4);
+      color: #4ade80;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .error {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      color: #ef4444;
+    }
+
+    .error-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .footer a {
+      color: #4ade80;
+      text-decoration: none;
+    }
+
+    .confidence-note {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">P</div>
+    <div class="title">PriXplainer</div>
+  </div>
+
+  <div id="idle-state">
+    <div class="domain-display">
+      <div class="domain-label">Current Website</div>
+      <div class="domain-name" id="current-domain">Loading...</div>
+    </div>
+    <button class="scan-btn" id="scan-btn">
+      <span>🔍</span>
+      <span>Scan for Privacy Risks</span>
+    </button>
+  </div>
+
+  <div id="scanning-state" class="scanning" style="display: none;">
+    <div class="spinner"></div>
+    <div class="scanning-text" id="scanning-text">Analyzing privacy practices...</div>
+  </div>
+
+  <div id="error-state" class="error" style="display: none;">
+    <div class="error-icon">⚠️</div>
+    <div id="error-message">An error occurred</div>
+    <button class="scan-btn" id="retry-btn" style="margin-top: 16px;">Try Again</button>
+  </div>
+
+  <div id="results-state" class="results">
+    <div class="score-card">
+      <div class="score-value" id="trust-score">--</div>
+      <div class="score-label">Trust Score</div>
+      <div class="risk-badge" id="risk-badge">--</div>
+    </div>
+
+    <div class="summary" id="summary"></div>
+
+    <div class="section" id="risks-section">
+      <div class="section-title">
+        <span>⚠️</span>
+        <span>Key Risks</span>
+      </div>
+      <div class="risk-list" id="risks-list"></div>
+    </div>
+
+    <div class="section" id="dark-patterns-section" style="display: none;">
+      <div class="section-title">
+        <span>🎭</span>
+        <span>Dark Patterns Detected</span>
+      </div>
+      <div class="risk-list" id="dark-patterns-list"></div>
+    </div>
+
+    <div class="confidence-note" id="confidence-note"></div>
+
+    <div class="action-buttons">
+      <button class="action-btn secondary" id="scan-another-btn">Scan Again</button>
+      <button class="action-btn primary" id="copy-btn">Copy Report</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    Powered by <a href="https://consenterra.lovable.app" target="_blank">ConsenTerra</a>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
